@@ -1,5 +1,6 @@
 using ATMAppCollege.Data;
 using ATMAppCollege.Entity;
+using System.ComponentModel;
 using System.Configuration;
 using System.Runtime.CompilerServices;
 
@@ -8,13 +9,13 @@ namespace ATMAppCollege
     public partial class Form1 : Form
     {
         private readonly AppDbContext _db;
-        public User user = new User();
+        public User user = CurrentUser.User;
         public List<User> users;
         public Form1(AppDbContext db)
         {
+            InitializeComponent();
             _db = db;
             users = _db.Users.ToList();
-            InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -26,6 +27,7 @@ namespace ATMAppCollege
         }
 
         bool isValid = true;
+        private int changeintCount = 0;
         private void RegisterButton_Click(object sender, EventArgs e)
         {
             if (FullNameInput.Text.Length > 5)
@@ -60,12 +62,22 @@ namespace ATMAppCollege
             {
                 FemaleRadio.Checked = false;
                 user.Gender = 'M';
+                changeintCount++;
+                if(changeintCount == 1)
+                {
+                    progressBar1.Value += 25;
+                }
             }
             else if (FemaleRadio.Checked)
             {
                 isValid = true;
                 MaleRadio.Checked = false;
                 user.Gender = 'F';
+                changeintCount++;
+                if (changeintCount == 1)
+                {
+                    progressBar1.Value += 25;
+                }
             }
             else
             {
@@ -79,8 +91,7 @@ namespace ATMAppCollege
                 AddUserCard addUserCard = new(_db);
                 users = _db.Users.ToList();
                 addUserCard.Show();
-                Form1 form1 = new(_db);
-                this.Hide();
+                Hide();
             }
         }
 
@@ -88,7 +99,6 @@ namespace ATMAppCollege
         {
             this.Hide();
             LoginPage loginPage = new(_db);
-            AddUserCard addUserCard = new(_db);
             loginPage.Show();
 
         }
@@ -106,6 +116,45 @@ namespace ATMAppCollege
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private int nameChange = 0;
+        private void FullNameInput_TextChanged(object sender, EventArgs e)
+        {
+            nameChange++;
+            if(nameChange == 1)
+            {
+                progressBar1.Value += 25;
+            }
+        }
+
+        private int emailChange = 0;
+        private void EmailInput_TextChanged(object sender, EventArgs e)
+        {
+            emailChange++;
+            if (emailChange == 1)
+            {
+                progressBar1.Value += 25;
+            }
+        }
+
+        private int passwordChange = 0;
+        private void PasswordInput_TextChanged(object sender, EventArgs e)
+        {
+            passwordChange++;
+            if (passwordChange == 1)
+            {
+                progressBar1.Value += 25;
+            }
+        }
+
+        private void MaleRadio_CheckedChanged(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             MoneyTransfer = new Button();
-            SendAmountInput = new MaskedTextBox();
             CardNumberInput = new TextBox();
+            SendAmountInput = new TextBox();
             SuspendLayout();
             // 
             // MoneyTransfer
@@ -43,14 +43,6 @@
             MoneyTransfer.UseVisualStyleBackColor = true;
             MoneyTransfer.Click += MoneyTransfer_Click;
             // 
-            // SendAmountInput
-            // 
-            SendAmountInput.Location = new Point(12, 41);
-            SendAmountInput.Mask = "000000";
-            SendAmountInput.Name = "SendAmountInput";
-            SendAmountInput.Size = new Size(181, 23);
-            SendAmountInput.TabIndex = 6;
-            // 
             // CardNumberInput
             // 
             CardNumberInput.Location = new Point(12, 12);
@@ -59,13 +51,20 @@
             CardNumberInput.Size = new Size(181, 23);
             CardNumberInput.TabIndex = 5;
             // 
+            // SendAmountInput
+            // 
+            SendAmountInput.Location = new Point(12, 41);
+            SendAmountInput.Name = "SendAmountInput";
+            SendAmountInput.Size = new Size(181, 23);
+            SendAmountInput.TabIndex = 8;
+            // 
             // TransferOwnBank
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(207, 120);
-            Controls.Add(MoneyTransfer);
             Controls.Add(SendAmountInput);
+            Controls.Add(MoneyTransfer);
             Controls.Add(CardNumberInput);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "TransferOwnBank";
@@ -78,7 +77,7 @@
         #endregion
 
         private Button MoneyTransfer;
-        private MaskedTextBox SendAmountInput;
         private TextBox CardNumberInput;
+        private TextBox SendAmountInput;
     }
 }

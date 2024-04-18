@@ -28,17 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            cashOutMasked = new MaskedTextBox();
             CashOutButton = new Button();
+            cashOutTextBox = new TextBox();
             SuspendLayout();
-            // 
-            // cashOutMasked
-            // 
-            cashOutMasked.Location = new Point(68, 12);
-            cashOutMasked.Mask = "111111";
-            cashOutMasked.Name = "cashOutMasked";
-            cashOutMasked.Size = new Size(100, 23);
-            cashOutMasked.TabIndex = 0;
             // 
             // CashOutButton
             // 
@@ -50,13 +42,20 @@
             CashOutButton.UseVisualStyleBackColor = true;
             CashOutButton.Click += CashOutButton_Click;
             // 
+            // cashOutTextBox
+            // 
+            cashOutTextBox.Location = new Point(42, 12);
+            cashOutTextBox.Name = "cashOutTextBox";
+            cashOutTextBox.Size = new Size(158, 23);
+            cashOutTextBox.TabIndex = 2;
+            // 
             // CashOut
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(230, 108);
+            Controls.Add(cashOutTextBox);
             Controls.Add(CashOutButton);
-            Controls.Add(cashOutMasked);
             Name = "CashOut";
             Text = "CashOut";
             Load += CashOut_Load;
@@ -65,8 +64,7 @@
         }
 
         #endregion
-
-        private MaskedTextBox cashOutMasked;
         private Button CashOutButton;
+        private TextBox cashOutTextBox;
     }
 }

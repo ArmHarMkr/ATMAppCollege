@@ -28,76 +28,67 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.BankNames = new System.Windows.Forms.ComboBox();
-            this.CardNumberInput = new System.Windows.Forms.TextBox();
-            this.SendAmountInput = new System.Windows.Forms.MaskedTextBox();
-            this.MoneyTransfer = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            BankNames = new ComboBox();
+            CardNumberInput = new TextBox();
+            MoneyTransfer = new Button();
+            SendAmountInput = new TextBox();
+            SuspendLayout();
             // 
             // BankNames
             // 
-            this.BankNames.FormattingEnabled = true;
-            this.BankNames.Items.AddRange(new object[] {
-            "Bless Bank",
-            "Ameriabank",
-            "ArmBussinessBank",
-            "Inecobank",
-            "AcbaBank",
-            "Central Bank",
-            "UniBank"});
-            this.BankNames.Location = new System.Drawing.Point(31, 26);
-            this.BankNames.Name = "BankNames";
-            this.BankNames.Size = new System.Drawing.Size(181, 23);
-            this.BankNames.TabIndex = 0;
+            BankNames.FormattingEnabled = true;
+            BankNames.Items.AddRange(new object[] { "Bless Bank", "Ameriabank", "ArmBussinessBank", "Inecobank", "AcbaBank", "Central Bank", "UniBank" });
+            BankNames.Location = new Point(31, 26);
+            BankNames.Name = "BankNames";
+            BankNames.Size = new Size(181, 23);
+            BankNames.TabIndex = 0;
             // 
             // CardNumberInput
             // 
-            this.CardNumberInput.Location = new System.Drawing.Point(31, 71);
-            this.CardNumberInput.Name = "CardNumberInput";
-            this.CardNumberInput.PlaceholderText = "Input receiver card number";
-            this.CardNumberInput.Size = new System.Drawing.Size(181, 23);
-            this.CardNumberInput.TabIndex = 1;
-            // 
-            // SendAmountInput
-            // 
-            this.SendAmountInput.Location = new System.Drawing.Point(31, 116);
-            this.SendAmountInput.Mask = "000000";
-            this.SendAmountInput.Name = "SendAmountInput";
-            this.SendAmountInput.Size = new System.Drawing.Size(181, 23);
-            this.SendAmountInput.TabIndex = 2;
+            CardNumberInput.Location = new Point(31, 71);
+            CardNumberInput.Name = "CardNumberInput";
+            CardNumberInput.PlaceholderText = "Input receiver card number";
+            CardNumberInput.Size = new Size(181, 23);
+            CardNumberInput.TabIndex = 1;
             // 
             // MoneyTransfer
             // 
-            this.MoneyTransfer.Location = new System.Drawing.Point(31, 162);
-            this.MoneyTransfer.Name = "MoneyTransfer";
-            this.MoneyTransfer.Size = new System.Drawing.Size(181, 38);
-            this.MoneyTransfer.TabIndex = 3;
-            this.MoneyTransfer.Text = "Send";
-            this.MoneyTransfer.UseVisualStyleBackColor = true;
-            this.MoneyTransfer.Click += new System.EventHandler(this.MoneyTransfer_Click);
+            MoneyTransfer.Location = new Point(31, 162);
+            MoneyTransfer.Name = "MoneyTransfer";
+            MoneyTransfer.Size = new Size(181, 38);
+            MoneyTransfer.TabIndex = 3;
+            MoneyTransfer.Text = "Send";
+            MoneyTransfer.UseVisualStyleBackColor = true;
+            MoneyTransfer.Click += MoneyTransfer_Click;
+            // 
+            // SendAmountInput
+            // 
+            SendAmountInput.Location = new Point(31, 110);
+            SendAmountInput.Name = "SendAmountInput";
+            SendAmountInput.Size = new Size(181, 23);
+            SendAmountInput.TabIndex = 4;
             // 
             // TransferForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(247, 212);
-            this.Controls.Add(this.MoneyTransfer);
-            this.Controls.Add(this.SendAmountInput);
-            this.Controls.Add(this.CardNumberInput);
-            this.Controls.Add(this.BankNames);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Name = "TransferForm";
-            this.Text = "TransferForm";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(247, 212);
+            Controls.Add(SendAmountInput);
+            Controls.Add(MoneyTransfer);
+            Controls.Add(CardNumberInput);
+            Controls.Add(BankNames);
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            Name = "TransferForm";
+            Text = "TransferForm";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private ComboBox BankNames;
         private TextBox CardNumberInput;
-        private MaskedTextBox SendAmountInput;
         private Button MoneyTransfer;
+        private TextBox SendAmountInput;
     }
 }

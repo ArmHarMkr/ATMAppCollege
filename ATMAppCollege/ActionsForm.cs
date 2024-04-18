@@ -1,5 +1,6 @@
 ﻿using ATMAppCollege.Data;
 using ATMAppCollege.Entity;
+using ATMAppCollege.Implementations;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -49,17 +50,18 @@ namespace ATMAppCollege
 
         private async void ActionsForm_Load(object sender, EventArgs e)
         {
-            Form1 form1 = new(_db);
-            currentUser = form1.user;
-            currentCard = await _db.Cards.FirstOrDefaultAsync(c => c.User == currentUser);
+            currentCard = await _db.Cards.FirstOrDefaultAsync(c => c.User == CurrentUser.User);
+            testCardLabel.Text = currentCard.CardNumbers;
+            testNameLabel.Text = CurrentUser.User.FullName;
         }
 
         private void TransOwnBank_Click(object sender, EventArgs e)
         {
             Form1 form1 = new(_db);
             User senderUser = form1.user;
-
-            //Finish this code
+            Card currentCard = _db.Cards.Include(c => c.User).FirstOrDefault(c => c.User == senderUser);
+            TransferOwnBank transferOwnBank = new(_db);
+            Hide();
         }
 
         private void CashInButton_Click(object sender, EventArgs e)
@@ -81,6 +83,10 @@ namespace ATMAppCollege
             BalanceForm bf = new(_db);
             bf.Show();
             Close();
+        }
+
+        private void testNameLabel_Click(object sender, EventArgs e)
+        {
         }
     }
 }

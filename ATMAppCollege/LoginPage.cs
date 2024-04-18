@@ -1,4 +1,5 @@
 ﻿using ATMAppCollege.Data;
+using ATMAppCollege.Entity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,17 +37,18 @@ namespace ATMAppCollege
         private void LoginButton_Click(object sender, EventArgs e)
         {
             Form1 registerForm = new(_db);
-            foreach (var user in registerForm.users)
+            IEnumerable<User> users = _db.Users; 
+            foreach (var user in users)
             {
                 if(user.Email == EmailInput.Text)
                 {
                     if(user.Password == PasswordInput.Text && 
                         RulesCheckBox.Checked)
                     {
-                        ActionsForm actionForm = new(_db);
-                        actionForm.Show();
-                        LoginPage loginPage = new(_db);
-                        loginPage.Close();
+                        LoginCard login = new(_db);
+                        login.Show();
+                        CurrentUser.User = user;
+                        Close();
                         break;
                     }
                     else

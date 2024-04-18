@@ -16,21 +16,31 @@ namespace ATMAppCollege
     public partial class LoginCard : Form
     {
         private readonly AppDbContext _db;
-        public LoginCard()
+        public LoginCard(AppDbContext db)
         {
             InitializeComponent();
+            _db = db;
         }
 
         private async void LoginCardButton_Click(object sender, EventArgs e)
         {
-            Form1 form1 = new(_db);
-            User currentUser = form1.user;
-            Card card = await _db.Cards.FirstOrDefaultAsync(c => c.User == currentUser);
-            if (card.CardPassword == cardLoginInput.Text)
+            Card card = await _db.Cards.FirstOrDefaultAsync(c => c.User == CurrentUser.User);
+            try
             {
-                ActionsForm actionForm = new(_db);
-                actionForm.Show();
-                this.Close();
+                if (card.CardPassword == cardLoginInput.Text)
+                {
+                    ActionsForm actionForm = new(_db);
+                    actionForm.Show();
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Wrong password, try again");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

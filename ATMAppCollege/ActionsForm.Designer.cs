@@ -41,6 +41,8 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
+            testNameLabel = new Label();
+            testCardLabel = new Label();
             SuspendLayout();
             // 
             // ExchangeButton
@@ -169,6 +171,25 @@
             label6.TabIndex = 11;
             label6.Text = "Balance";
             // 
+            // testNameLabel
+            // 
+            testNameLabel.AutoSize = true;
+            testNameLabel.Location = new Point(273, 84);
+            testNameLabel.Name = "testNameLabel";
+            testNameLabel.Size = new Size(38, 15);
+            testNameLabel.TabIndex = 13;
+            testNameLabel.Text = "label8";
+            testNameLabel.Click += testNameLabel_Click;
+            // 
+            // testCardLabel
+            // 
+            testCardLabel.AutoSize = true;
+            testCardLabel.Location = new Point(273, 118);
+            testCardLabel.Name = "testCardLabel";
+            testCardLabel.Size = new Size(38, 15);
+            testCardLabel.TabIndex = 14;
+            testCardLabel.Text = "label8";
+            // 
             // ActionsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -176,6 +197,8 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(566, 288);
+            Controls.Add(testCardLabel);
+            Controls.Add(testNameLabel);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -210,5 +233,7 @@
         private Label label4;
         private Label label5;
         private Label label6;
+        private Label testNameLabel;
+        private Label testCardLabel;
     }
 }

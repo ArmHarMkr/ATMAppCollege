@@ -1,6 +1,7 @@
 ﻿using ATMAppCollege.Data;
 using ATMAppCollege.Entity;
 using ATMAppCollege.Implementations;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,11 +23,21 @@ namespace ATMAppCollege
             InitializeComponent();
         }
 
-        private void MoneyTransfer_Click(object sender, EventArgs e)
+        private async void MoneyTransfer_Click(object sender, EventArgs e)
         {
             ActionsForm actionsForm = new(_db);
-            BankActions.TransferOtherBank(actionsForm.currentCard, Convert.ToDouble(SendAmountInput.Text));
-
+            Card currentCard = await _db.Cards.Include(c => c.User).FirstOrDefaultAsync(c => c.User == CurrentUser.User);
+            try
+            {
+                if(currentCard != null)
+                {
+                    BankActions.TransferOtherBank(currentCard, Convert.ToDouble(SendAmountInput.Text));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

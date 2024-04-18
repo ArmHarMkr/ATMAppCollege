@@ -1,6 +1,7 @@
 ﻿using ATMAppCollege.Data;
 using ATMAppCollege.Entity;
 using ATMAppCollege.Implementations;
+using Microsoft.EntityFrameworkCore;
 
 namespace ATMAppCollege
 {
@@ -13,16 +14,11 @@ namespace ATMAppCollege
             InitializeComponent();
         }
 
-        private void CashIn_Load(object sender, EventArgs e)
-        {
-            CashInProgress.Visible = false;
-        }
-
-        private void CashInButton_Click(object sender, EventArgs e)
+        private async void CashInButton_Click(object sender, EventArgs e)
         {
             ActionsForm actionForm = new(_db);
-            Card currentCard = actionForm.currentCard;
-            if (ChashInAmount != null)
+            Card currentCard = await _db.Cards.Include(c => c.User).FirstOrDefaultAsync(c => c.User == CurrentUser.User);
+            if (ChashInAmount != null && currentCard != null)
             {
                 BankActions.CashIn(currentCard, Convert.ToDouble(ChashInAmount.Text));
                 actionForm.Show();
@@ -30,7 +26,7 @@ namespace ATMAppCollege
             }
             else
             {
-                MessageBox.Show("Input valid amount");
+                MessageBox.Show("Input valid amount or Card Not Found");
             }
         }
 

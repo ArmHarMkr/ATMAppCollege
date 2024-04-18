@@ -1,4 +1,6 @@
 ﻿using ATMAppCollege.Data;
+using ATMAppCollege.Entity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,10 +29,21 @@ namespace ATMAppCollege
             Close();
         }
 
-        private void BalanceForm_Load(object sender, EventArgs e)
+        private async void BalanceForm_Load(object sender, EventArgs e)
         {
             ActionsForm actionsForm = new(_db);
-            BalanceLabel.Text = "You have: $" + actionsForm.currentCard.AccessibleMoney.ToString();
+            try
+            {
+                Card currentCard = await _db.Cards.Include(c => c.User).FirstOrDefaultAsync(c => c.User == CurrentUser.User);
+                if(currentCard != null)
+                    BalanceLabel.Text = "You have: $" + currentCard.AccessibleMoney.ToString();
+                else
+                    MessageBox.Show("No card found");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
