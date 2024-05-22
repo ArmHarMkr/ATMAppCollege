@@ -30,11 +30,12 @@
         {
             CashOutButton = new Button();
             cashOutTextBox = new TextBox();
+            ExitBtn = new Button();
             SuspendLayout();
             // 
             // CashOutButton
             // 
-            CashOutButton.Location = new Point(80, 41);
+            CashOutButton.Location = new Point(42, 41);
             CashOutButton.Name = "CashOutButton";
             CashOutButton.Size = new Size(75, 54);
             CashOutButton.TabIndex = 1;
@@ -49,11 +50,22 @@
             cashOutTextBox.Size = new Size(158, 23);
             cashOutTextBox.TabIndex = 2;
             // 
+            // ExitBtn
+            // 
+            ExitBtn.Location = new Point(125, 41);
+            ExitBtn.Name = "ExitBtn";
+            ExitBtn.Size = new Size(75, 54);
+            ExitBtn.TabIndex = 3;
+            ExitBtn.Text = "Go Back";
+            ExitBtn.UseVisualStyleBackColor = true;
+            ExitBtn.Click += ExitBtn_Click;
+            // 
             // CashOut
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(230, 108);
+            Controls.Add(ExitBtn);
             Controls.Add(cashOutTextBox);
             Controls.Add(CashOutButton);
             Name = "CashOut";
@@ -66,5 +78,6 @@
         #endregion
         private Button CashOutButton;
         private TextBox cashOutTextBox;
+        private Button ExitBtn;
     }
 }

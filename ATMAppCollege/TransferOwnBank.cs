@@ -2,6 +2,8 @@
 using ATMAppCollege.Entity;
 using ATMAppCollege.Implementations;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,12 +36,24 @@ namespace ATMAppCollege
             {
                 MessageBox.Show("Type valid number");
             }
+            if(receiverCard == currentCard)
+            {
+                MessageBox.Show("You cannot transfer money to yourself!");
+            }
             else
             {
-                BankActions.TransferOurBank(currentCard, receiverCard, Convert.ToDouble(SendAmountInput.Text));
-                await _db.SaveChangesAsync();
-                actionForm.Show();
-                Close();
+                if(currentCard.AccessibleMoney >= Convert.ToDouble(SendAmountInput.Text))
+                {
+                    currentCard.AccessibleMoney -= Convert.ToDouble(SendAmountInput.Text);
+                    receiverCard.AccessibleMoney += Convert.ToDouble(SendAmountInput.Text);
+                    await _db.SaveChangesAsync();
+                    actionForm.Show();
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Not enough money");
+                }
             }
         }
 

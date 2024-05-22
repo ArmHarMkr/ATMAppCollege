@@ -17,7 +17,7 @@ namespace ATMAppCollege
         private readonly AppDbContext _db;
         public LoginPage(AppDbContext db)
         {
-            _db = db;   
+            _db = db;
             InitializeComponent();
         }
 
@@ -37,45 +37,35 @@ namespace ATMAppCollege
         private void LoginButton_Click(object sender, EventArgs e)
         {
             Form1 registerForm = new(_db);
-            IEnumerable<User> users = _db.Users; 
-            foreach (var user in users)
+            IEnumerable<User> users = _db.Users;
+            User currentUser = users.FirstOrDefault(c => c.Email == EmailInput.Text);
+            if (currentUser != null)
             {
-                if(user.Email == EmailInput.Text)
+                if (currentUser.Password == PasswordInput.Text &&
+                    RulesCheckBox.Checked)
                 {
-                    if(user.Password == PasswordInput.Text && 
-                        RulesCheckBox.Checked)
-                    {
-                        LoginCard login = new(_db);
-                        login.Show();
-                        CurrentUser.User = user;
-                        Close();
-                        break;
-                    }
-                    else
-                    {
-                        if (!RulesCheckBox.Checked)
-                        {
-                            MessageBox.Show("Check the Rules text box");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Wrong password");
-                        }
-                    }
+                    LoginCard login = new(_db);
+                    login.Show();
+                    CurrentUser.User = currentUser;
+                    Close();
                 }
                 else
                 {
-                    MessageBox.Show("No Email found. Register");
+                    if (!RulesCheckBox.Checked)
+                    {
+                        MessageBox.Show("Check the Rules text box");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Wrong password");
+                    }
                 }
-                
-            }
-        }
 
-        private void LoginPage_Load(object sender, EventArgs e)
-        {
-            
+            }
+
+
+
+
         }
-       
     }
-   
 }

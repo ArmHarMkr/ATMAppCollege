@@ -1,5 +1,6 @@
 ﻿using ATMAppCollege.Data;
 using ATMAppCollege.Entity;
+using ATMAppCollege.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,13 @@ using System.Threading.Tasks;
 
 namespace ATMAppCollege.Implementations
 {
-    public static class CardCreator
+    public class CardCreator : ICardCreator
     {
-        public static Card CreateNewCard(Card card, User cardUser, string cardPassword)
+        public CardCreator()
+        {
+        }
+
+        public Card CreateNewCard(Card card, User cardUser, string cardPassword)
         {
             Random random = new();
             card.User = cardUser;

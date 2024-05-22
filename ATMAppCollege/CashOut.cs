@@ -27,13 +27,29 @@ namespace ATMAppCollege
         {
             ActionsForm actionForm = new(_db);
             Card currentCard = await _db.Cards.Include(c => c.User).FirstOrDefaultAsync(c => c.User == CurrentUser.User);
-            await BankActions.CashOut(currentCard, Convert.ToDouble(cashOutTextBox.Text));
-            actionForm.Show();
-            Close();
+            if (currentCard == null)
+            {
+                MessageBox.Show("No card found");
+            }
+            else
+            {
+                currentCard.AccessibleMoney -= Convert.ToDouble(cashOutTextBox.Text);
+                _db.Cards.Update(currentCard);
+                await _db.SaveChangesAsync();
+                actionForm.Show();
+                Close();
+            }
         }
 
         private void CashOut_Load(object sender, EventArgs e)
         {
+        }
+
+        private void ExitBtn_Click(object sender, EventArgs e)
+        {
+            ActionsForm actionForm = new(_db);
+            actionForm.Show();
+            Close();
         }
     }
 }

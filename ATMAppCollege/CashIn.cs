@@ -18,9 +18,11 @@ namespace ATMAppCollege
         {
             ActionsForm actionForm = new(_db);
             Card currentCard = await _db.Cards.Include(c => c.User).FirstOrDefaultAsync(c => c.User == CurrentUser.User);
-            if (ChashInAmount != null && currentCard != null)
+            if (CashInAmount.Text != string.Empty && currentCard != null)
             {
-                BankActions.CashIn(currentCard, Convert.ToDouble(ChashInAmount.Text));
+                currentCard.AccessibleMoney += Convert.ToDouble(CashInAmount.Text);
+                _db.Cards.Update(currentCard);
+                await _db.SaveChangesAsync();
                 actionForm.Show();
                 Close();
             }
@@ -31,6 +33,11 @@ namespace ATMAppCollege
         }
 
         private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ChashInAmount_TextChanged(object sender, EventArgs e)
         {
 
         }

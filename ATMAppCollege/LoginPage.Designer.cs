@@ -150,7 +150,6 @@
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "LoginPage";
             Text = "Login Page";
-            Load += LoginPage_Load;
             ResumeLayout(false);
             PerformLayout();
         }

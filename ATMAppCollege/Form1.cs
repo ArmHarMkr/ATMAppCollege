@@ -63,7 +63,7 @@ namespace ATMAppCollege
                 FemaleRadio.Checked = false;
                 user.Gender = 'M';
                 changeintCount++;
-                if(changeintCount == 1)
+                if (changeintCount == 1)
                 {
                     progressBar1.Value += 25;
                 }
@@ -127,7 +127,7 @@ namespace ATMAppCollege
         private void FullNameInput_TextChanged(object sender, EventArgs e)
         {
             nameChange++;
-            if(nameChange == 1)
+            if (nameChange == 1)
             {
                 progressBar1.Value += 25;
             }
@@ -155,6 +155,12 @@ namespace ATMAppCollege
 
         private void MaleRadio_CheckedChanged(object sender, EventArgs e)
         {
+        }
+
+        private void MouseBtn_Click(object sender, EventArgs e)
+        {
+            MouseClickForm mouseClickForm = new MouseClickForm();
+            mouseClickForm.Show();
         }
     }
 }

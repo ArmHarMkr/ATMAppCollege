@@ -34,6 +34,7 @@
             ConvertingMoney = new TextBox();
             ConvertResultLabel = new Label();
             GoToActions = new Button();
+            SaveBtn = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -86,19 +87,30 @@
             // 
             // GoToActions
             // 
-            GoToActions.Location = new Point(240, 185);
+            GoToActions.Location = new Point(272, 185);
             GoToActions.Name = "GoToActions";
-            GoToActions.Size = new Size(92, 68);
+            GoToActions.Size = new Size(69, 68);
             GoToActions.TabIndex = 7;
             GoToActions.Text = "Go Back";
             GoToActions.UseVisualStyleBackColor = true;
             GoToActions.Click += GoToActions_Click;
+            // 
+            // SaveBtn
+            // 
+            SaveBtn.Location = new Point(212, 186);
+            SaveBtn.Name = "SaveBtn";
+            SaveBtn.Size = new Size(54, 68);
+            SaveBtn.TabIndex = 8;
+            SaveBtn.Text = "Save";
+            SaveBtn.UseVisualStyleBackColor = true;
+            SaveBtn.Click += SaveBtn_Click;
             // 
             // ExchangeForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(353, 265);
+            Controls.Add(SaveBtn);
             Controls.Add(GoToActions);
             Controls.Add(ConvertResultLabel);
             Controls.Add(groupBox1);
@@ -119,5 +131,6 @@
         private Label ConvertResultLabel;
         private Button GoToActions;
         private TextBox ConvertingMoney;
+        private Button SaveBtn;
     }
 }

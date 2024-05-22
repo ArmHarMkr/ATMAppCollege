@@ -31,7 +31,7 @@
             components = new System.ComponentModel.Container();
             CashInButton = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
-            ChashInAmount = new TextBox();
+            CashInAmount = new TextBox();
             SuspendLayout();
             // 
             // CashInButton
@@ -49,19 +49,20 @@
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
             // 
-            // ChashInAmount
+            // CashInAmount
             // 
-            ChashInAmount.Location = new Point(51, 12);
-            ChashInAmount.Name = "ChashInAmount";
-            ChashInAmount.Size = new Size(155, 23);
-            ChashInAmount.TabIndex = 3;
+            CashInAmount.Location = new Point(51, 12);
+            CashInAmount.Name = "CashInAmount";
+            CashInAmount.Size = new Size(155, 23);
+            CashInAmount.TabIndex = 3;
+            CashInAmount.TextChanged += ChashInAmount_TextChanged;
             // 
             // CashIn
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(247, 111);
-            Controls.Add(ChashInAmount);
+            Controls.Add(CashInAmount);
             Controls.Add(CashInButton);
             Name = "CashIn";
             Text = "Cash in";
@@ -72,6 +73,6 @@
         #endregion
         private Button CashInButton;
         private System.Windows.Forms.Timer timer1;
-        private TextBox ChashInAmount;
+        private TextBox CashInAmount;
     }
 }
