@@ -157,10 +157,5 @@ namespace ATMAppCollege
         {
         }
 
-        private void MouseBtn_Click(object sender, EventArgs e)
-        {
-            MouseClickForm mouseClickForm = new MouseClickForm();
-            mouseClickForm.Show();
-        }
     }
 }

@@ -26,7 +26,7 @@ namespace ATMAppCollege
         private async void CashOutButton_Click(object sender, EventArgs e)
         {
             ActionsForm actionForm = new(_db);
-            Card currentCard = await _db.Cards.Include(c => c.User).FirstOrDefaultAsync(c => c.User == CurrentUser.User);
+            Card? currentCard = await _db.Cards.Include(c => c.User).FirstOrDefaultAsync(c => c.User == CurrentUser.User);
             if (currentCard == null)
             {
                 MessageBox.Show("No card found");

@@ -221,7 +221,6 @@
             MouseBtn.TabIndex = 18;
             MouseBtn.Text = "Mouse Form";
             MouseBtn.UseVisualStyleBackColor = true;
-            MouseBtn.Click += MouseBtn_Click;
             // 
             // Form1
             // 

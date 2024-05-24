@@ -19,7 +19,7 @@ namespace ATMAppCollege
     {
         private readonly AppDbContext _db;
         public User currentUser;
-        public Card currentCard;
+        public Card? currentCard;
         public ActionsForm(AppDbContext db)
         {
             _db = db;
@@ -44,8 +44,6 @@ namespace ATMAppCollege
 
         private void TransOtherButton_Click(object sender, EventArgs e)
         {
-            TransferForm transferForm = new(_db);
-            transferForm.Show();
         }
 
         private async void ActionsForm_Load(object sender, EventArgs e)
@@ -55,11 +53,12 @@ namespace ATMAppCollege
             testNameLabel.Text = CurrentUser.User.FullName;
         }
 
-        private void TransOwnBank_Click(object sender, EventArgs e)
+        private async void TransOwnBank_Click(object sender, EventArgs e)
         {
             Form1 form1 = new(_db);
             User senderUser = form1.user;
-            Card currentCard = _db.Cards.Include(c => c.User).FirstOrDefault(c => c.User == senderUser);
+            Card? currentCard = await _db.Cards.Include(c => c.User).FirstOrDefaultAsync(c => c.User == senderUser);
+            currentCard = await _db.Cards.Include(c => c.User).FirstOrDefaultAsync(c => c.User == senderUser);
             TransferOwnBank transferOwnBank = new(_db);
             Hide();
         }
@@ -87,6 +86,19 @@ namespace ATMAppCollege
 
         private void testNameLabel_Click(object sender, EventArgs e)
         {
+        }
+
+        private void UserInfoBtn_Click(object sender, EventArgs e)
+        {
+            UserInfoForm userInfo = new(_db);
+            userInfo.Show();
+            Hide();
+        }
+
+        private void ExitBtn_Click(object sender, EventArgs e)
+        {
+            Form1 form = new(_db);
+            form.Close();
         }
     }
 }

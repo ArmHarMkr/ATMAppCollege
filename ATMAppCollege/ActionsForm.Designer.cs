@@ -30,19 +30,21 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActionsForm));
             ExchangeButton = new Button();
-            TransOtherButton = new Button();
             TransOwnBank = new Button();
             Balance = new Button();
             CashOutButton = new Button();
             CashInButton = new Button();
             label1 = new Label();
-            label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
             testNameLabel = new Label();
             testCardLabel = new Label();
+            label2 = new Label();
+            UserInfoBtn = new Button();
+            label7 = new Label();
+            ExitBtn = new Button();
             SuspendLayout();
             // 
             // ExchangeButton
@@ -55,20 +57,10 @@
             ExchangeButton.UseVisualStyleBackColor = false;
             ExchangeButton.Click += ExchangeButton_Click;
             // 
-            // TransOtherButton
-            // 
-            TransOtherButton.BackColor = SystemColors.ActiveBorder;
-            TransOtherButton.Location = new Point(-73, 118);
-            TransOtherButton.Name = "TransOtherButton";
-            TransOtherButton.Size = new Size(128, 44);
-            TransOtherButton.TabIndex = 1;
-            TransOtherButton.UseVisualStyleBackColor = false;
-            TransOtherButton.Click += TransOtherButton_Click;
-            // 
             // TransOwnBank
             // 
             TransOwnBank.BackColor = SystemColors.ActiveBorder;
-            TransOwnBank.Location = new Point(-73, 214);
+            TransOwnBank.Location = new Point(-84, 214);
             TransOwnBank.Name = "TransOwnBank";
             TransOwnBank.Size = new Size(128, 44);
             TransOwnBank.TabIndex = 2;
@@ -116,23 +108,12 @@
             label1.TabIndex = 6;
             label1.Text = "Exchange";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Silver;
-            label2.BorderStyle = BorderStyle.FixedSingle;
-            label2.Location = new Point(61, 133);
-            label2.Name = "label2";
-            label2.Size = new Size(118, 17);
-            label2.TabIndex = 7;
-            label2.Text = "Transfer (other Bank)";
-            // 
             // label3
             // 
             label3.AutoSize = true;
             label3.BackColor = Color.Silver;
             label3.BorderStyle = BorderStyle.FixedSingle;
-            label3.Location = new Point(61, 229);
+            label3.Location = new Point(50, 229);
             label3.Name = "label3";
             label3.Size = new Size(50, 17);
             label3.TabIndex = 8;
@@ -190,6 +171,48 @@
             testCardLabel.TabIndex = 14;
             testCardLabel.Text = "label8";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Silver;
+            label2.BorderStyle = BorderStyle.FixedSingle;
+            label2.Location = new Point(61, 133);
+            label2.Name = "label2";
+            label2.Size = new Size(68, 17);
+            label2.TabIndex = 16;
+            label2.Text = "About User";
+            // 
+            // UserInfoBtn
+            // 
+            UserInfoBtn.BackColor = SystemColors.ActiveBorder;
+            UserInfoBtn.Location = new Point(-73, 118);
+            UserInfoBtn.Name = "UserInfoBtn";
+            UserInfoBtn.Size = new Size(128, 44);
+            UserInfoBtn.TabIndex = 15;
+            UserInfoBtn.UseVisualStyleBackColor = false;
+            UserInfoBtn.Click += UserInfoBtn_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.BackColor = Color.Silver;
+            label7.BorderStyle = BorderStyle.FixedSingle;
+            label7.Location = new Point(273, 229);
+            label7.Name = "label7";
+            label7.Size = new Size(28, 17);
+            label7.TabIndex = 18;
+            label7.Text = "Exit";
+            // 
+            // ExitBtn
+            // 
+            ExitBtn.BackColor = SystemColors.ActiveBorder;
+            ExitBtn.Location = new Point(259, 247);
+            ExitBtn.Name = "ExitBtn";
+            ExitBtn.Size = new Size(52, 83);
+            ExitBtn.TabIndex = 17;
+            ExitBtn.UseVisualStyleBackColor = false;
+            ExitBtn.Click += ExitBtn_Click;
+            // 
             // ActionsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -197,19 +220,21 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(566, 288);
+            Controls.Add(label7);
+            Controls.Add(ExitBtn);
+            Controls.Add(label2);
+            Controls.Add(UserInfoBtn);
             Controls.Add(testCardLabel);
             Controls.Add(testNameLabel);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(Balance);
             Controls.Add(CashOutButton);
             Controls.Add(CashInButton);
             Controls.Add(TransOwnBank);
-            Controls.Add(TransOtherButton);
             Controls.Add(ExchangeButton);
             FormBorderStyle = FormBorderStyle.FixedToolWindow;
             Name = "ActionsForm";
@@ -222,18 +247,20 @@
         #endregion
 
         private Button ExchangeButton;
-        private Button TransOtherButton;
         private Button TransOwnBank;
         private Button Balance;
         private Button CashOutButton;
         private Button CashInButton;
         private Label label1;
-        private Label label2;
         private Label label3;
         private Label label4;
         private Label label5;
         private Label label6;
         private Label testNameLabel;
         private Label testCardLabel;
+        private Label label2;
+        private Button UserInfoBtn;
+        private Label label7;
+        private Button ExitBtn;
     }
 }
