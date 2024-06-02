@@ -30,6 +30,7 @@ namespace ATMAppCollege
         private int changeintCount = 0;
         private void RegisterButton_Click(object sender, EventArgs e)
         {
+            
             if (FullNameInput.Text.Length > 5)
             {
                 user.FullName = FullNameInput.Text;

@@ -44,7 +44,6 @@
             panel2 = new Panel();
             panel3 = new Panel();
             progressBar1 = new ProgressBar();
-            MouseBtn = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -211,24 +210,12 @@
             progressBar1.TabIndex = 17;
             progressBar1.Click += progressBar1_Click;
             // 
-            // MouseBtn
-            // 
-            MouseBtn.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            MouseBtn.ForeColor = Color.FromArgb(255, 128, 0);
-            MouseBtn.Location = new Point(51, 421);
-            MouseBtn.Name = "MouseBtn";
-            MouseBtn.Size = new Size(149, 42);
-            MouseBtn.TabIndex = 18;
-            MouseBtn.Text = "Mouse Form";
-            MouseBtn.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkCyan;
-            ClientSize = new Size(260, 477);
-            Controls.Add(MouseBtn);
+            ClientSize = new Size(260, 432);
             Controls.Add(progressBar1);
             Controls.Add(panel3);
             Controls.Add(panel2);
@@ -270,6 +257,5 @@
         private Panel panel2;
         private Panel panel3;
         private ProgressBar progressBar1;
-        private Button MouseBtn;
     }
 }

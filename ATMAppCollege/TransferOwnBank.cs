@@ -32,33 +32,47 @@ namespace ATMAppCollege
             ActionsForm actionForm = new(_db);
             Card currentCard = await _db.Cards.Include(c => c.User).FirstOrDefaultAsync(c => c.User == CurrentUser.User);
             Card receiverCard = _db.Cards.FirstOrDefault(x => x.CardNumbers == CardNumberInput.Text);
-            if(receiverCard == null)
+            if (receiverCard == null)
             {
-                MessageBox.Show("Type valid number");
+                MessageBox.Show("No receiver found");
             }
-            if(receiverCard == currentCard)
+            if (receiverCard == currentCard)
             {
                 MessageBox.Show("You cannot transfer money to yourself!");
             }
             else
             {
-                if(currentCard.AccessibleMoney >= Convert.ToDouble(SendAmountInput.Text))
+                try
                 {
-                    currentCard.AccessibleMoney -= Convert.ToDouble(SendAmountInput.Text);
-                    receiverCard.AccessibleMoney += Convert.ToDouble(SendAmountInput.Text);
-                    await _db.SaveChangesAsync();
-                    actionForm.Show();
-                    Close();
+                    if (currentCard.AccessibleMoney >= Convert.ToDouble(SendAmountInput.Text))
+                    {
+                        currentCard.AccessibleMoney -= Convert.ToDouble(SendAmountInput.Text);
+                        receiverCard.AccessibleMoney += Convert.ToDouble(SendAmountInput.Text);
+                        await _db.SaveChangesAsync();
+                        actionForm.Show();
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Not enough money");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Not enough money");
+                    MessageBox.Show(ex.Message);
                 }
             }
         }
 
         private void TransferOwnBank_Load(object sender, EventArgs e)
         {
+        }
+
+        private void GoBackBtn_Click(object sender, EventArgs e)
+        {
+            ActionsForm actionForm = new(_db);
+            actionForm.Show();
+            Close();
         }
     }
 }

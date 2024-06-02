@@ -31,13 +31,14 @@
             MoneyTransfer = new Button();
             CardNumberInput = new TextBox();
             SendAmountInput = new TextBox();
+            GoBackBtn = new Button();
             SuspendLayout();
             // 
             // MoneyTransfer
             // 
             MoneyTransfer.Location = new Point(12, 70);
             MoneyTransfer.Name = "MoneyTransfer";
-            MoneyTransfer.Size = new Size(181, 38);
+            MoneyTransfer.Size = new Size(91, 38);
             MoneyTransfer.TabIndex = 7;
             MoneyTransfer.Text = "Send";
             MoneyTransfer.UseVisualStyleBackColor = true;
@@ -58,11 +59,22 @@
             SendAmountInput.Size = new Size(181, 23);
             SendAmountInput.TabIndex = 8;
             // 
+            // GoBackBtn
+            // 
+            GoBackBtn.Location = new Point(109, 70);
+            GoBackBtn.Name = "GoBackBtn";
+            GoBackBtn.Size = new Size(84, 38);
+            GoBackBtn.TabIndex = 9;
+            GoBackBtn.Text = "Go Back";
+            GoBackBtn.UseVisualStyleBackColor = true;
+            GoBackBtn.Click += GoBackBtn_Click;
+            // 
             // TransferOwnBank
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(207, 120);
+            Controls.Add(GoBackBtn);
             Controls.Add(SendAmountInput);
             Controls.Add(MoneyTransfer);
             Controls.Add(CardNumberInput);
@@ -79,5 +91,6 @@
         private Button MoneyTransfer;
         private TextBox CardNumberInput;
         private TextBox SendAmountInput;
+        private Button GoBackBtn;
     }
 }

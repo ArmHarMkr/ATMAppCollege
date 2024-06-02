@@ -55,12 +55,9 @@ namespace ATMAppCollege
 
         private async void TransOwnBank_Click(object sender, EventArgs e)
         {
-            Form1 form1 = new(_db);
-            User senderUser = form1.user;
-            Card? currentCard = await _db.Cards.Include(c => c.User).FirstOrDefaultAsync(c => c.User == senderUser);
-            currentCard = await _db.Cards.Include(c => c.User).FirstOrDefaultAsync(c => c.User == senderUser);
             TransferOwnBank transferOwnBank = new(_db);
-            Hide();
+            transferOwnBank.Show();
+            this.Close();
         }
 
         private void CashInButton_Click(object sender, EventArgs e)
@@ -97,8 +94,9 @@ namespace ATMAppCollege
 
         private void ExitBtn_Click(object sender, EventArgs e)
         {
-            Form1 form = new(_db);
-            form.Close();
+            Form1 form1 = new(_db);
+            form1.Show();
+            this.Close();
         }
     }
 }
